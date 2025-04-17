@@ -11,64 +11,57 @@
 </head>
 
 <body>
-    <div class="continer">
+    <div class="container mx-auto p-3">
         <h1>Edit Client: {{ $myClient->name }}</h1>
-
-        @if ($errors->any())
-            <div style="color: red;">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
         <form action="{{ route('clients.update', $myClient->id) }}" method="POST">
             @csrf
             @method('PUT')
 
             <label for="name">Nama:</label><br>
-            <input type="text" name="name" value="{{ old('name', $myClient->name) }}" required><br><br>
+            <input class="form-control" type="text" name="name" value="{{ old('name', $myClient->name) }}" required>
 
             <label for="slug">Slug:</label><br>
-            <input type="text" name="slug" value="{{ old('slug', $myClient->slug) }}" required><br><br>
+            <input class="form-control" type="text" name="slug" value="{{ old('slug', $myClient->slug) }}" required>
 
             <label for="is_project">Tipe:</label><br>
-            <select name="is_project" required>
+            <select class="form-control" name="is_project" required>
                 <option value="0" {{ old('is_project', $myClient->is_project) == '0' ? 'selected' : '' }}>Bukan
                     Project</option>
                 <option value="1" {{ old('is_project', $myClient->is_project) == '1' ? 'selected' : '' }}>Project
                 </option>
-            </select><br><br>
+            </select>
 
             <label for="self_capture">Self Capture:</label><br>
-            <select name="self_capture" required>
+            <select class="form-control" name="self_capture" required>
                 <option value="1" {{ old('self_capture', $myClient->self_capture) == '1' ? 'selected' : '' }}>Ya
                 </option>
                 <option value="0" {{ old('self_capture', $myClient->self_capture) == '0' ? 'selected' : '' }}>
                     Tidak</option>
-            </select><br><br>
+            </select>
 
             <label for="client_prefix">Prefix Client (4 huruf):</label><br>
-            <input type="text" name="client_prefix" value="{{ old('client_prefix', $myClient->client_prefix) }}"
-                maxlength="4" required><br><br>
+            <input class="form-control" type="text" name="client_prefix" value="{{ old('client_prefix', $myClient->client_prefix) }}"
+                maxlength="4" required>
 
             <label for="client_logo">Logo Client (URL / nama file):</label><br>
-            <input type="text" name="client_logo" value="{{ old('client_logo', $myClient->client_logo) }}"><br><br>
+            <input class="form-control" type="text" name="client_logo" value="{{ old('client_logo', $myClient->client_logo) }}">
 
             <label for="address">Alamat:</label><br>
-            <textarea name="address">{{ old('address', $myClient->address) }}</textarea><br><br>
+            <textarea class="form-control" name="address">{{ old('address', $myClient->address) }}</textarea>
 
             <label for="phone_number">Nomor Telepon:</label><br>
-            <input type="text" name="phone_number"
-                value="{{ old('phone_number', $myClient->phone_number) }}"><br><br>
+            <input class="form-control" type="text" name="phone_number"
+                value="{{ old('phone_number', $myClient->phone_number) }}">
 
             <label for="city">Kota:</label><br>
-            <input type="text" name="city" value="{{ old('city', $myClient->city) }}"><br><br>
+            <input class="form-control" type="text" name="city" value="{{ old('city', $myClient->city) }}">
+            <br>
+            <div class="row">
+                <button class="btn btn-primary w-50" type="submit">Simpan</button>
 
-            <button type="submit">Update</button>
-            <a href="{{ route('clients.index') }}">Batal</a>
+                <a class="btn btn-danger w-50" href="{{ route('clients.index') }}">Batal</a>
+            </div>
         </form>
     </div>
 </body>

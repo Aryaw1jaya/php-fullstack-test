@@ -13,9 +13,6 @@
             <div class="col">
                 <h1>My Clients</h1>
             </div>
-            <div class="col">
-                <a href="{{ route('clients.add') }}" class="btn btn-primary">New Client</a>
-            </div>
         </div>
         <table class="table table-striped w-full">
             <tr class="table-dark">
@@ -54,6 +51,7 @@
                 </tr>
             @endforeach
         </table>
+        <a href="{{ route('clients.add') }}" class="btn btn-primary">New Client</a>
     </div>
 </body>
 </html>
